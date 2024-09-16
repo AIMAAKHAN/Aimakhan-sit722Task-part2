@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: fastapi-books-app-service
+spec:
+  selector:
+    app: fastapi-books-app
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8000
+  type: LoadBalancer  # You can change this to ClusterIP if you don't want external access

@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fastapi-books-app
+  labels:
+    app: fastapi-books-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fastapi-books-app
+  template:
+    metadata:
+      labels:
+        app: fastapi-books-app
+    spec:
+      containers:
+      - name: fastapi-books-app
+        image: oassaghir/fastapi-books-app:latest
+        ports:
+        - containerPort: 8000
+        env:
+        - name: DATABASE_URL
+          value: "postgresql://book_catalog_g2k6_user:7yJBvFZHZNH4VlYTYzxkVEn6ZpMeBWqa@dpg-crjdaedds78s73ea5mag-a.oregon-postgres.render.com/book_catalog_g2k6"
+        - name: PORT
+          value: "8000"
